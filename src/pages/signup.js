@@ -1,40 +1,59 @@
 import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
-import { LOGIN } from '../constants/routes';
+import * as ROUTES from '../constants/routes';
 import { doesUserNameExist } from '../services/firebase';
 
 function Signup() {
-  const history = useHistory();
-  const { firebase } = useContext(FirebaseContext);
-  const [emailAddress, setEmailAddress] = useState('');
-  const [password, setPassword] = useState('');
-  const [username, setUserName] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [error, setError] = useState('');
-  const isInvalid =
-    password.length < 1 || emailAddress.length < 1 || username.length < 1 || fullName.length < 1;
+    const history = useHistory();
+    const { firebase } = useContext(FirebaseContext);
+    const [emailAddress, setEmailAddress] = useState('');
+    const [password, setPassword] = useState('');
+    const [username, setUserName] = useState('');
+    const [fullName, setFullName] = useState('');
+    const [error, setError] = useState('');
+    const isInvalid =
+        password.length < 1 || emailAddress.length < 1 || username.length < 1 || fullName.length < 1;
 
-  const handleSignup = async (event) => {
-      event.preventDefault();
+    const handleSignup = async (event) => {
+        event.preventDefault();
 
-      const usernameExists = await doesUserNameExist(username);
-      if (usernameExists) {
-          try {
-              const createdUserResult = await firebase
-              .auth()
-              .createUserWithEmailAndPassword(emailAddress, password);
-              await createdUserResult.user.updateProfile( {
-                  displayName: username
-              });
-              
+        const usernameExists = await doesUserNameExist(username);
+        if (!usernameExists.length) {
+            try {
+                const createdUserResult = await firebase
+                    .auth()
+                    .createUserWithEmailAndPassword(emailAddress, password);
+
+                await createdUserResult.user.updateProfile({
+                    displayName: username
+                });
+
+                await firebase.firestore().collection('users').add( {
+                    username: username.toLowerCase(),
+                    fullName: fullName,
+                    emailAddress: emailAddress.toLowerCase(),
+                    userId: createdUserResult.user.uid,
+                    following: [],
+                    followers: [],
+                    dateCreated: Date.now()
+                })
+
+                history.push(ROUTES.DASHBOARD)
+
             } catch (error) {
-              
-          }
-      }
-  };
+                setEmailAddress('');
+                setPassword('');
+                setUserName('');
+                setFullName('');
+                setError(error.message);
+            }
+        } else {
+            setError("That username is taken, please try another");
+        }
+    };
 
-  return (
+    return (
         <div className="container flex mx-auto max-w-screen-md items-center h-screen">
             <div className="flex w-3/5">
                 <img src="https://instagramothers.s3.eu-west-2.amazonaws.com/iphone-with-profile.jpg" alt="iPhone login screen" />
@@ -48,9 +67,9 @@ function Signup() {
                         />
                     </h1>
                     <h1 className="px-5 mb-6 text-center text-gray-base font-bold">
-                    Sign up to see photos and videos from your friends.
+                        Sign up to see photos and videos from your friends.
                     </h1>
-                    {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
+                    {error && <p className="mb-4 text-center text-xs text-red-primary">{error}</p>}
                     <form onSubmit={handleSignup} method="POST">
                         <input
                             type="text"
@@ -94,7 +113,7 @@ function Signup() {
                     </form>
                 </div>
                 <div className="border border-gray-primary mt-8 bg-white">
-                    <p className="py-5 px-16 text-sm">Have an account? <b className="text-blue-light"><a href={LOGIN}> {`Log In`}</a></b></p>
+                    <p className="py-5 px-16 text-sm">Have an account? <b className="text-blue-light"><a href={ROUTES.LOGIN}> {`Log In`}</a></b></p>
                 </div>
             </div>
         </div>
