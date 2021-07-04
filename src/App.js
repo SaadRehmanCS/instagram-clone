@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import * as ROUTES from './constants/routes';
+import useAuthListener from './hooks/use-auth-listener';
+import UserContext from './context/user';
 
 const Login = lazy(() => import('./pages/login'));
 const Signup = lazy(() => import('./pages/signup'));
@@ -8,17 +10,23 @@ const Dashboard = lazy(() => import('./pages/dashboard'));
 const Notfound = lazy(() => import('./pages/notfound'));
 
 function App() {
+  const { user } = useAuthListener();
+
   return (
+    <UserContext.Provider value={{ user }}>
     <Router>
-      <Suspense fallback={<p>loading...</p>}>
+      <Suspense fallback={<img src="https://instagramothers.s3.eu-west-2.amazonaws.com/loading_icon_instagram.png"
+        alt="Loading page icon"
+        className="w-2/12 ml-96 mt-20" />}>
         <Switch>
           <Route path={ROUTES.LOGIN} component={Login} />
           <Route path={ROUTES.SIGN_UP} component={Signup} />
-          <Route path={ROUTES.NOT_FOUND} component={Notfound} />
           <Route path={ROUTES.DASHBOARD} component={Dashboard} />
+          <Route component={Notfound} />
         </Switch>
       </Suspense>
     </Router>
+    </UserContext.Provider>
   );
 }
 

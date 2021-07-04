@@ -13,7 +13,8 @@ module.exports = {
       white: '#ffffff',
       blue: {
         medium: '#005c98',
-        light: '#1ab0de'
+        light: '#1ab0de',
+        button: '#0095f6'
       },
       black: {
         light: '#262626',

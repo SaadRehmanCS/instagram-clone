@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 import * as ROUTES from '../constants/routes';
@@ -14,6 +14,8 @@ function Signup() {
     const [error, setError] = useState('');
     const isInvalid =
         password.length < 1 || emailAddress.length < 1 || username.length < 1 || fullName.length < 1;
+
+    useEffect(() => document.title = "Instagram - Sign Up");
 
     const handleSignup = async (event) => {
         event.preventDefault();
