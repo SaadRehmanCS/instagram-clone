@@ -38,16 +38,17 @@ function signedIn() {
                     </svg>
                 </Link>
             </div>
-            <div className="py-4 ml-4">
+            
+            <div>
+                <Link to={`/p/${user.displayName}`}>
+                <img className="flex h-10 w-10 mt-2 ml-4 rounded-full" src={`https://instagramavatars.s3.eu-west-2.amazonaws.com/avatars/${user.displayName}.jpg`} alt="Display avatar"/>
+                </Link>
+            </div>
+            <div className="py-4 ml-8">
             <Link to={ROUTES.LOGIN}>
                 <svg onClick={() => firebase.auth().signOut() } xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                 </svg>
-                </Link>
-            </div>
-            <div>
-                <Link to={`/p/${user.displayName}`}>
-                <img className="flex h-10 w-10 mt-2 ml-8 rounded-full" src={`https://instagramavatars.s3.eu-west-2.amazonaws.com/avatars/${user.displayName}.jpg`} alt="Display avatar"/>
                 </Link>
             </div>
         </React.Fragment>

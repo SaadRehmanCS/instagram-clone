@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@welldone-software/why-did-you-render": "^6.2.0",
     "date-fns": "^2.22.1",
     "firebase": "^8.6.8",
     "react": "^17.0.2",
@@ -44,7 +45,6 @@
     ]
   },
   "devDependencies": {
-    
     "tailwindcss": "^2.2.4"
   }
 }

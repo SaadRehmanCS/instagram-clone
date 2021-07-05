@@ -69,3 +69,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # instagram-clone
+
+
+### useful info
+
+SVG icons were taken from: https://heroicons.com
+
+### installs/dependencies
+npm install @welldone-software/why-did-you-render
