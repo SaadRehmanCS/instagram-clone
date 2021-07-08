@@ -77,3 +77,5 @@ SVG icons were taken from: https://heroicons.com
 
 ### installs/dependencies
 npm install @welldone-software/why-did-you-render
+npm install react-loading-skeleton
+npm install prop-types

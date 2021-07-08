@@ -57,7 +57,6 @@ function signedIn() {
 
 function Header(props) {
     const { user } = useContext(UserContext);
-    console.log('user', user);
     return (
         <div className="flex bg-white border-b border-gray-primary">
             <div>
