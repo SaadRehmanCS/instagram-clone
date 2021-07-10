@@ -8,13 +8,9 @@ export default function Timeline() {
 
     return (
         <div className="container col-span-2">
-            <>
+        
             {!photos ? (
-                <React.Fragment>
-                   
                         <Skeleton count={2} width={640} height={400} className="mb-2 mt-2" />
-                    
-                </React.Fragment>
             ) : (
                 photos?.length > 0 ? (
                     photos.map((content) => <Post key={content.docId} content={content}/>)
@@ -22,7 +18,6 @@ export default function Timeline() {
                     <p className="text-center text-2xl">Follow people to see photos!</p>
                 )
             )}
-            </>
         </div>
     );
 }

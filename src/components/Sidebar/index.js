@@ -1,5 +1,6 @@
-import React, { memo } from "react";
+import React, { memo, useContext } from "react";
 import useUser from "../../hooks/use-user";
+import UserContext from "../../context/user";
 import User from './User';
 import Suggestions from "./Suggestions";
 
@@ -15,6 +16,6 @@ const Sidebar = () => {
     );
 }
 
-export default memo(Sidebar);
+export default Sidebar;
 
 // Sidebar.whyDidYouRender = true;

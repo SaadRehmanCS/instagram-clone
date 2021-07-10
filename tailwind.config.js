@@ -9,6 +9,10 @@ module.exports = {
     fill: (theme) => ({
       red: theme('colors.red.primary')
     }),
+    stroke: (theme) => ({
+      red: theme('colors.red.primary')
+
+    }),
     colors: {
       white: '#ffffff',
       blue: {

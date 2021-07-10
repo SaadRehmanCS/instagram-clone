@@ -14167,8 +14167,8 @@ video {
   fill: #ed4956;
 }
 
-.stroke-current {
-  stroke: currentColor;
+.stroke-red {
+  stroke: #ed4956;
 }
 
 .stroke-0 {
@@ -31970,8 +31970,8 @@ video {
     fill: #ed4956;
   }
 
-  .sm\:stroke-current {
-    stroke: currentColor;
+  .sm\:stroke-red {
+    stroke: #ed4956;
   }
 
   .sm\:stroke-0 {
@@ -49701,8 +49701,8 @@ video {
     fill: #ed4956;
   }
 
-  .md\:stroke-current {
-    stroke: currentColor;
+  .md\:stroke-red {
+    stroke: #ed4956;
   }
 
   .md\:stroke-0 {
@@ -67432,8 +67432,8 @@ video {
     fill: #ed4956;
   }
 
-  .lg\:stroke-current {
-    stroke: currentColor;
+  .lg\:stroke-red {
+    stroke: #ed4956;
   }
 
   .lg\:stroke-0 {
@@ -85163,8 +85163,8 @@ video {
     fill: #ed4956;
   }
 
-  .xl\:stroke-current {
-    stroke: currentColor;
+  .xl\:stroke-red {
+    stroke: #ed4956;
   }
 
   .xl\:stroke-0 {
@@ -102894,8 +102894,8 @@ video {
     fill: #ed4956;
   }
 
-  .\32xl\:stroke-current {
-    stroke: currentColor;
+  .\32xl\:stroke-red {
+    stroke: #ed4956;
   }
 
   .\32xl\:stroke-0 {

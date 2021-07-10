@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 import * as ROUTES from '../constants/routes';
 import { doesUserNameExist } from '../services/firebase';
+import { memo } from 'react';
 
 function Signup() {
     const history = useHistory();
@@ -121,4 +122,4 @@ function Signup() {
         </div>
     );
 }
-export default Signup;
+export default memo(Signup);
