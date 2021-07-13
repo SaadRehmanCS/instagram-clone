@@ -63,7 +63,7 @@ function Actions({ docId, totalLikes, likedPhoto, handleFocus }) {
                 </p>
             </div>
         </>
-    )
+    );
 }
 
 export default memo(Actions);

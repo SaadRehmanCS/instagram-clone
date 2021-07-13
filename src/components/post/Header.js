@@ -15,7 +15,7 @@ export default function Header({username}) {
                 </Link>
             </div>
         </div>
-    )
+    );
 }
 
 Header.propTypes = {

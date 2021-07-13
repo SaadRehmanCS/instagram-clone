@@ -36,7 +36,7 @@ export default function Comments({docId, comments: allComments, posted, commentI
                 commentInput={commentInput}
             />
         </>
-    )
+    );
 }
 
 Comments.propTypes = {

@@ -1,5 +1,7 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
+import { useContext } from "react/cjs/react.development";
+import UserContext from "../context/user";
 import usePhotos from "../hooks/use-photos";
 import Post from "./post";
 

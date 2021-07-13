@@ -8,7 +8,7 @@ export default function Footer({caption, username}) {
             </span>
             <span>{caption}</span>
         </div>
-    )
+    );
 }
 
 Footer.propTypes = {
