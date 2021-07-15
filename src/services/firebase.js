@@ -12,6 +12,23 @@ export async function doesUserNameExist(username) {
     
 }
 
+export async function getUserByUsername(username) {
+    const result = await firebase
+    .firestore()
+    .collection('users')
+    .where('username', '==', username)
+    .get();
+    // console.log('result',result);
+    // console.log('map', result.docs.map((user) => user.data().length > 0));
+    const user = result.docs.map((item) => ({
+        ...item.data(),
+        docId: item.id
+    }));
+
+    return user.length > 0 ? user : false;
+    
+}
+
 // get user from the firstore where userId === userId (passed from the auth)
 export async function getUserByUserId(userId) {
     const result = await firebase
@@ -72,4 +89,20 @@ export async function getPhotos(userId, following) {
     );
 
     return photosWithUserDetails;
+}
+
+// export async function getUserIdByUsername(username) {
+//     const result = await firebase.firestore().collection('users')
+//     .where()
+// }
+
+export async function getUserPhotosByUserId(username) {
+    const [user] = await getUserByUsername(username);
+    const result = await firebase.firestore().collection('users')
+    .where('userId', '==', user.userId).get();
+
+    return result.docs.map((item) => ({
+        ...item.data(),
+        docId: item.id
+    }));
 }
