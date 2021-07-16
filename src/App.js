@@ -18,7 +18,7 @@ function App() {
     <Router>
       <Suspense fallback={<img src="https://instagramothers.s3.eu-west-2.amazonaws.com/loading_icon_instagram.png"
         alt="Loading page icon"
-        className="w-2/12 ml-96 mt-20" />}>
+        className="align-middle w-2/12 m-auto py-44" />}>
         <Switch>
           <Route path={ROUTES.LOGIN} component={Login} />
           <Route path={ROUTES.SIGN_UP} component={Signup} />
