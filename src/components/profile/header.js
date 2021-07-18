@@ -7,7 +7,7 @@ import { isUserFollowingProfile } from "../../services/firebase";
 
 export default function Header({
     photosCount, followerCount, setFollowerCount, profile: {
-        docId: profileDocId, username: profileUserName, userId: profileUserId, fullName, following = []
+        docId: profileDocId, username: profileUserName, userId: profileUserId, fullName, following = [], followers = []
     } }) {
 
     const { user } = useUser();
@@ -17,7 +17,7 @@ export default function Header({
     useEffect(() => {
         const isLoggedInUserFollowingProfile = async () => {
             const isFollowing = await isUserFollowingProfile(user.username, profileUserId);
-            setIsFollowingProfile(isFollowing);
+            setIsFollowingProfile(!!isFollowing);
         }
 
         if (user.username && profileUserId) {
@@ -26,10 +26,10 @@ export default function Header({
     });
 
     const handleToggleFollow = () => {
-        console.log('before', isFollowingProfile);
         setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
-        console.log('after', isFollowingProfile);
-        //setFollowerCount();
+        setFollowerCount({
+            followerCount: isFollowingProfile ? followers.length - 1 : followers.length + 1
+        });
     };
 
     return (
@@ -52,6 +52,11 @@ export default function Header({
                         >{isFollowingProfile ? 'Unfollow' : 'Follow'}
                         </button>
                     )}
+                </div>
+                <div className="container flex mt-4">
+                        {followers === undefined || following === undefined ? (
+                            <Skeleton count={1} width={677}/>
+                        )}
                 </div>
             </div>
         </div>
