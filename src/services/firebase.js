@@ -20,13 +20,10 @@ export async function getUserByUsername(username) {
     .get();
     // console.log('result',result);
     // console.log('map', result.docs.map((user) => user.data().length > 0));
-    const user = result.docs.map((item) => ({
+    return result.docs.map((item) => ({
         ...item.data(),
         docId: item.id
     }));
-
-    return user.length > 0 ? user : false;
-    
 }
 
 // get user from the firstore where userId === userId (passed from the auth)
@@ -96,15 +93,18 @@ export async function getPhotos(userId, following) {
 //     .where()
 // }
 
-export async function getUserPhotosByUserId(username) {
-    const [user] = await getUserByUsername(username);
-    const result = await firebase.firestore().collection('users')
-    .where('userId', '==', user.userId).get();
+export async function getUserPhotosByUserId(userId) {
+    const result = await firebase
+    .firestore()
+    .collection('photos')
+    .where('userId', '==', userId)
+    .get();
 
-    return result.docs.map((item) => ({
-        ...item.data(),
-        docId: item.id
-    }));
+  const photos = result.docs.map((photo) => ({
+    ...photo.data(),
+    docId: photo.id
+  }));
+  return photos;
 }
 
 export async function isUserFollowingProfile(loggedInUserUsername, profileUserId) {
@@ -118,4 +118,9 @@ export async function isUserFollowingProfile(loggedInUserUsername, profileUserId
     }));
 
     return response.userId;
+}
+
+export async function toggleFollow(isFollowingProfile, activeUserDocId, profileDocId, followingUserId, profileUserId, ) {
+    await updateFollowing(activeUserDocId, profileUserId, isFollowingProfile);
+    await updateFollowers(profileDocId,followingUserId, isFollowingProfile);
 }

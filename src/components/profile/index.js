@@ -17,14 +17,14 @@ export default function UserProfile( { user} ) {
 
     useEffect(() => {
         async function getProfileInfoAndPhotos() {
-            const photos = await getUserPhotosByUserId(user.username);
+            const photos = await getUserPhotosByUserId(user.userId);
             dispatch({ profile: user, photosCollection: photos, followerCount: user.followers.length });
         }
 
             getProfileInfoAndPhotos();
     });
 
-    return <>
+    return <div className="ml-36">
         <Header 
             photosCount={photosCollection ? photosCollection.length : 0}
             profile={profile}
@@ -32,7 +32,7 @@ export default function UserProfile( { user} ) {
             setFollowerCount={dispatch}
         />
         <Photos photos={photosCollection} />
-    </>;
+    </div>;
 }
 
 UserProfile.propTypes = {
