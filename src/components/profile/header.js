@@ -26,12 +26,12 @@ export default function Header({
         const isLoggedInUserFollowingProfile =  async () => {
             const isFollowing = await isUserFollowingProfile(user.username, profileUserId);
             setIsFollowingProfile(!!isFollowing);
-        }
+        };
 
         if (user.username && profileUserId) {
             isLoggedInUserFollowingProfile();
         }
-    });
+    }, [user?.username, profileUserId]);
 
     return (
         <div className="grid grid-cols-3 gap-4 align-middle justify-center mx-56 w-full">
