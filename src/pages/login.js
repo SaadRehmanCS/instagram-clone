@@ -27,7 +27,7 @@ function Login() {
 
   return (
     <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-      <div className="flex w-3/5">
+      <div className="flex w-3/5 h-full">
         <img src="https://instagramothers.s3.eu-west-2.amazonaws.com/iphone-with-profile.jpg" alt="iPhone login screen" />
       </div>
       <div className="flex flex-col w-2/5 ">
