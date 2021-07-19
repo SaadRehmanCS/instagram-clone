@@ -1,3 +1,8 @@
+# Run the app
+* instagram-clone-git-main-saadrehmancs.vercel.app
+* instagram-clone-murex.vercel.app
+* instagram-clone-saadrehmancs.vercel.app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
