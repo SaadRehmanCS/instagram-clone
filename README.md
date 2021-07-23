@@ -81,6 +81,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 SVG icons were taken from: https://heroicons.com
 
 ### installs/dependencies
-npm install @welldone-software/why-did-you-render
-npm install react-loading-skeleton
-npm install prop-types
+run ```npm install``` to install all dependencies
